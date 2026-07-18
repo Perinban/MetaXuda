@@ -1,0 +1,90 @@
+{
+  "days": {
+    "2026-07-04": {
+      "clones": 1,
+      "unique_cloners": 1,
+      "unique_visitors": 1,
+      "views": 1
+    },
+    "2026-07-05": {
+      "clones": 0,
+      "unique_cloners": 0,
+      "unique_visitors": 3,
+      "views": 5
+    },
+    "2026-07-06": {
+      "clones": 0,
+      "unique_cloners": 0,
+      "unique_visitors": 0,
+      "views": 0
+    },
+    "2026-07-07": {
+      "clones": 0,
+      "unique_cloners": 0,
+      "unique_visitors": 0,
+      "views": 0
+    },
+    "2026-07-08": {
+      "clones": 2,
+      "unique_cloners": 1,
+      "unique_visitors": 2,
+      "views": 2
+    },
+    "2026-07-09": {
+      "clones": 1,
+      "unique_cloners": 1,
+      "unique_visitors": 1,
+      "views": 1
+    },
+    "2026-07-10": {
+      "clones": 0,
+      "unique_cloners": 0,
+      "unique_visitors": 3,
+      "views": 3
+    },
+    "2026-07-11": {
+      "clones": 0,
+      "unique_cloners": 0,
+      "unique_visitors": 1,
+      "views": 4
+    },
+    "2026-07-12": {
+      "clones": 0,
+      "unique_cloners": 0,
+      "unique_visitors": 1,
+      "views": 1
+    },
+    "2026-07-13": {
+      "clones": 1,
+      "unique_cloners": 1,
+      "unique_visitors": 1,
+      "views": 1
+    },
+    "2026-07-14": {
+      "clones": 1,
+      "unique_cloners": 1,
+      "unique_visitors": 0,
+      "views": 0
+    },
+    "2026-07-15": {
+      "clones": 0,
+      "unique_cloners": 0,
+      "unique_visitors": 1,
+      "views": 1
+    },
+    "2026-07-16": {
+      "clones": 0,
+      "unique_cloners": 0,
+      "unique_visitors": 1,
+      "views": 1
+    },
+    "2026-07-17": {
+      "clones": 0,
+      "unique_cloners": 0,
+      "unique_visitors": 2,
+      "views": 11
+    }
+  },
+  "tracked_from": "2026-07-04",
+  "updated_at": "2026-07-18T12:38:43.585870+00:00"
+}
