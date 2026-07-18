@@ -1,0 +1,79 @@
+name: Update repository traffic
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/traffic.yml"
+      - "scripts/update_traffic.py"
+  schedule:
+    - cron: "17 3 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: repository-traffic
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out main
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      - name: Restore traffic history
+        run: |
+          git fetch origin traffic-data:refs/remotes/origin/traffic-data || true
+          if git show-ref --verify --quiet refs/remotes/origin/traffic-data; then
+            mkdir -p analytics
+            git show origin/traffic-data:analytics/traffic.json > analytics/traffic.json || true
+          fi
+
+      - name: Collect and consolidate traffic
+        env:
+          TRAFFIC_TOKEN: ${{ secrets.TRAFFIC_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+        run: python3 scripts/update_traffic.py
+
+      - name: Prepare generated files
+        run: |
+          mkdir -p /tmp/metaxuda-traffic/analytics
+          cp analytics/traffic.json /tmp/metaxuda-traffic/analytics/traffic.json
+          cp TRAFFIC.md /tmp/metaxuda-traffic/TRAFFIC.md
+          cp traffic.svg /tmp/metaxuda-traffic/traffic.svg
+
+      - name: Commit to traffic-data branch
+        run: |
+          rm -rf TRAFFIC.md analytics traffic.svg
+
+          if git show-ref --verify --quiet refs/remotes/origin/traffic-data; then
+            git switch --force-create traffic-data origin/traffic-data
+          else
+            git switch --orphan traffic-data
+            git rm -rf --ignore-unmatch .
+            git clean -fdx
+          fi
+
+          mkdir -p analytics
+          cp /tmp/metaxuda-traffic/analytics/traffic.json analytics/traffic.json
+          cp /tmp/metaxuda-traffic/TRAFFIC.md TRAFFIC.md
+          cp /tmp/metaxuda-traffic/traffic.svg traffic.svg
+
+          git add analytics/traffic.json TRAFFIC.md traffic.svg
+
+          if git diff --cached --quiet; then
+            echo "No traffic changes to commit."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "chore: update repository traffic"
+          git push origin traffic-data

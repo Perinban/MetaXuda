@@ -2,9 +2,10 @@
 
 MetaXuda is an **experimental CUDA-compatible runtime shim for Apple Silicon**, written in **Rust**, that runs **Numba CUDA kernels** on Apple GPUs by mapping CUDA runtime calls to **Apple Metal**.
 
-Kernel bodies (`@cuda.jit`) run unchanged. Memory transfers must go through the
-buffer API rather than passing NumPy arrays directly - see
-[Known Limitations](#-known-limitations).
+![MetaXuda repository traffic](https://raw.githubusercontent.com/Perinban/MetaXuda/traffic-data/traffic.svg)
+
+Kernel bodies (`@cuda.jit`) run unchanged. NumPy arrays can be passed directly
+to kernels, or managed explicitly with the MetaXuda buffer API.
 
 It is designed as a drop-in replacement for core CUDA runtime libraries, enabling GPU-accelerated Python workflows on macOS **without requiring the NVIDIA CUDA Toolkit or NVIDIA hardware**.
 
@@ -45,48 +46,20 @@ Not all CUDA APIs are implemented, and behavior may differ from NVIDIA CUDA in e
 
 ## 🚫 Known Limitations
 
-### macOS 26 (Tahoe) or later is required
+### Metal 3 and Metal 4 compatibility
 
-The bundled Metal shaders are compiled against **Metal Shading Language 4.0**, which
-is only supported on macOS 26 and above. On earlier releases (Sequoia and older),
-kernel launches fail when the compute pipeline is created:
+MetaXuda bundles separate precompiled shader libraries for **Metal 3** and
+**Metal 4**. At runtime, the shim tries the newest compatible library first and
+automatically falls back when the current macOS Metal runtime cannot load it.
+No manual configuration or OS-version switch is required.
 
-```
-thread 'cuda-async-worker' panicked at libcudart/src/api/context.rs:72:13:
-Failed to create compute pipeline 'elementwise_dispatch':
-"Function elementwise_dispatch is using language version 4.0 which is
- incompatible with this OS."
-```
+This currently supports:
 
-There is no workaround from the Python side: the language version is baked into
-the precompiled shaders inside `libcudart.dylib`. Running on macOS 15 or earlier
-requires a build targeting Metal 3, which is not currently published.
+* **Metal 3** on macOS 15 (Sequoia) and compatible Apple Silicon systems
+* **Metal 4** on macOS 26 (Tahoe) and newer compatible systems
 
-### Host arrays are not transferred automatically
-
-Numba normally copies a NumPy array to the device for you when it is passed
-straight to a kernel. That implicit transfer does not work through the shim:
-the kernel runs, but results are **silently** left as zeros and no error is
-raised.
-
-```python
-out = np.zeros(n, dtype=np.float32)
-add[32, 32](a, b, out) # host arrays
-print(out[:5]) # [0. 0. 0. 0. 0.] -- wrong, and silent
-```
-
-Allocate device memory explicitly instead, with either `GPUMemoryBuffer` or
-`cuda.to_device`:
-
-```python
-buf_out = GPUMemoryBuffer(length=n, dtype=np.float32)
-add[32, 32](buf_a.dev_array, buf_b.dev_array, buf_out.dev_array)
-cuda.synchronize()
-print(buf_out.download()[:5]) # [0. 2. 4. 6. 8.]
-```
-
-Existing Numba CUDA code therefore needs its memory transfers adapted; kernel
-bodies run unchanged.
+Metal 2 and earlier are not supported. Actual availability can still depend on
+the Apple GPU and the Metal features used by a particular shader.
 
 ### Scalar arithmetic in kernel arguments
 
@@ -109,8 +82,8 @@ Pass scalars as single-element device arrays until this is resolved.
 
 ### Requirements
 
-* macOS 26 (Tahoe) or later - see [Known Limitations](#-known-limitations)
-* Apple Silicon (M-series)
+* macOS 15 (Sequoia) or later
+* Apple Silicon (M-series) with Metal 3 or Metal 4 support
 * Python >= 3.10
 * NumPy >= 1.23
 * Numba >= 0.61, < 0.67
@@ -165,12 +138,11 @@ python -m metaxuda.demos.pipeline
 
 ## 🚀 Usage
 
-Import `metaxuda` before using `numba.cuda`, and pass device buffers to your
-kernels. Kernel bodies themselves need no changes:
+Import `metaxuda` before using `numba.cuda`. Kernel bodies and normal NumPy
+array arguments need no changes:
 
 ```python
 import metaxuda
-from metaxuda import GPUMemoryBuffer
 from numba import cuda
 import numpy as np
 
@@ -181,15 +153,17 @@ def add(a, b, out):
         out[i] = a[i] + b[i]
 
 n = 1024
-buf_a = GPUMemoryBuffer(arr=np.arange(n, dtype=np.float32))
-buf_b = GPUMemoryBuffer(arr=np.arange(n, dtype=np.float32))
-buf_out = GPUMemoryBuffer(length=n, dtype=np.float32)
+a = np.arange(n, dtype=np.float32)
+b = np.arange(n, dtype=np.float32)
+out = np.zeros(n, dtype=np.float32)
 
-add[32, 32](buf_a.dev_array, buf_b.dev_array, buf_out.dev_array)
-cuda.synchronize()
+add[32, 32](a, b, out)
 
-print(buf_out.download()[:5])   # [0. 2. 4. 6. 8.]
+print(out[:5])   # [0. 2. 4. 6. 8.]
 ```
+
+Use `GPUMemoryBuffer` or `cuda.to_device` when explicit device-memory control is
+needed.
 
 `import metaxuda` must come before any kernel launch. It redirects Numba at the
 bundled shim libraries; without it, Numba looks for a real CUDA toolkit and

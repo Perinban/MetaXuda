@@ -1,0 +1,49 @@
+name: Project showcase
+description: Share a project, integration, benchmark, or experiment built with MetaXuda
+title: "[Showcase]: "
+labels: ["showcase"]
+body:
+  - type: markdown
+    attributes:
+      value: Thanks for sharing what you built with MetaXuda.
+
+  - type: input
+    id: project_name
+    attributes:
+      label: Project name
+      placeholder: My MetaXuda project
+    validations:
+      required: true
+
+  - type: textarea
+    id: summary
+    attributes:
+      label: What did you build?
+      description: Briefly describe the project and what MetaXuda is used for.
+    validations:
+      required: true
+
+  - type: textarea
+    id: results
+    attributes:
+      label: Results or highlights
+      description: Share benchmarks, screenshots, demos, or notable outcomes.
+
+  - type: input
+    id: link
+    attributes:
+      label: Project link
+      description: Repository, demo, article, notebook, or documentation URL.
+
+  - type: textarea
+    id: details
+    attributes:
+      label: Technical details
+      description: Mention hardware, backend, models, kernels, or integrations used.
+
+  - type: checkboxes
+    id: consent
+    attributes:
+      label: Permission
+      options:
+        - label: This project may be referenced in MetaXuda documentation or release notes.

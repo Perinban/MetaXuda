@@ -7,7 +7,7 @@ name = "metaxuda"
 dynamic = ["version"]
 description = "CUDA-compatible GPU runtime for Apple Silicon that transparently maps CUDA kernels and memory operations to Metal, enabling Numba and Python GPU workloads with stream overlap and tier-aware memory management."
 readme = "README.md"
-requires-python = ">=3.10"
+requires-python = ">=3.12"
 authors = [
     { name = "Perinban Parameshwaran", email = "p.perinban@gmail.com" }
 ]
