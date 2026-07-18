@@ -1,0 +1,1947 @@
+{
+  "operations": {
+    "sin": {
+      "opcode": 0,
+      "display_name": "sin",
+      "arg_count": 1,
+      "aliases": [
+        "sine"
+      ],
+      "metal": "sin(x)",
+      "fast_enabled": 1
+    },
+    "cos": {
+      "opcode": 1,
+      "display_name": "cos",
+      "arg_count": 1,
+      "aliases": [
+        "cosine"
+      ],
+      "metal": "cos(x)",
+      "fast_enabled": 1
+    },
+    "add": {
+      "opcode": 2,
+      "display_name": "add",
+      "arg_count": 2,
+      "aliases": [
+        "plus",
+        "sum"
+      ],
+      "metal": "a + b",
+      "fast_enabled": 0
+    },
+    "subtract": {
+      "opcode": 3,
+      "display_name": "sub",
+      "arg_count": 2,
+      "aliases": [
+        "subtract",
+        "minus",
+        "diff"
+      ],
+      "metal": "a - b",
+      "fast_enabled": 0
+    },
+    "multiply": {
+      "opcode": 4,
+      "display_name": "mul",
+      "arg_count": 2,
+      "aliases": [
+        "mul",
+        "multiply",
+        "mult",
+        "times",
+        "prod"
+      ],
+      "metal": "a * b",
+      "fast_enabled": 0
+    },
+    "divide": {
+      "opcode": 5,
+      "display_name": "div",
+      "arg_count": 2,
+      "aliases": [
+        "divide",
+        "quotient"
+      ],
+      "metal": "b != 0.0f ? a / b : 0.0f",
+      "fast_enabled": 0
+    },
+    "sqrt": {
+      "opcode": 6,
+      "display_name": "sqrt",
+      "arg_count": 1,
+      "aliases": [
+        "squareroot",
+        "square_root"
+      ],
+      "metal": "sqrt(x)",
+      "fast_enabled": 1
+    },
+    "exp": {
+      "opcode": 7,
+      "display_name": "exp",
+      "arg_count": 1,
+      "aliases": [
+        "exponential"
+      ],
+      "metal": "exp(x)",
+      "fast_enabled": 1
+    },
+    "log": {
+      "opcode": 8,
+      "display_name": "log",
+      "arg_count": 1,
+      "aliases": [
+        "ln",
+        "logarithm",
+        "natural_log"
+      ],
+      "metal": "log(x)",
+      "fast_enabled": 1
+    },
+    "tan": {
+      "opcode": 9,
+      "display_name": "tan",
+      "arg_count": 1,
+      "aliases": [
+        "tangent"
+      ],
+      "metal": "tan(x)",
+      "fast_enabled": 1
+    },
+    "asin": {
+      "opcode": 10,
+      "display_name": "asin",
+      "arg_count": 1,
+      "aliases": [
+        "arcsin",
+        "arcsine",
+        "inverse_sin"
+      ],
+      "metal": "asin(x)",
+      "fast_enabled": 0
+    },
+    "acos": {
+      "opcode": 11,
+      "display_name": "acos",
+      "arg_count": 1,
+      "aliases": [
+        "arccos",
+        "arccosine",
+        "inverse_cos"
+      ],
+      "metal": "acos(x)",
+      "fast_enabled": 0
+    },
+    "atan": {
+      "opcode": 12,
+      "display_name": "atan",
+      "arg_count": 1,
+      "aliases": [
+        "arctan",
+        "arctangent",
+        "inverse_tan"
+      ],
+      "metal": "atan(x)",
+      "fast_enabled": 0
+    },
+    "atan2": {
+      "opcode": 13,
+      "display_name": "atan2",
+      "arg_count": 2,
+      "aliases": [
+        "arctan2",
+        "atan_2"
+      ],
+      "metal": "atan2(a, b)",
+      "fast_enabled": 0
+    },
+    "sinh": {
+      "opcode": 14,
+      "display_name": "sinh",
+      "arg_count": 1,
+      "aliases": [
+        "hyperbolic_sine"
+      ],
+      "metal": "sinh(x)",
+      "fast_enabled": 0
+    },
+    "cosh": {
+      "opcode": 15,
+      "display_name": "cosh",
+      "arg_count": 1,
+      "aliases": [
+        "hyperbolic_cosine"
+      ],
+      "metal": "cosh(x)",
+      "fast_enabled": 0
+    },
+    "tanh": {
+      "opcode": 16,
+      "display_name": "tanh",
+      "arg_count": 1,
+      "aliases": [
+        "hyperbolic_tangent"
+      ],
+      "metal": "tanh(x)",
+      "fast_enabled": 0
+    },
+    "asinh": {
+      "opcode": 17,
+      "display_name": "asinh",
+      "arg_count": 1,
+      "aliases": [
+        "arcsinh",
+        "inverse_sinh"
+      ],
+      "metal": "asinh(x)",
+      "fast_enabled": 0
+    },
+    "acosh": {
+      "opcode": 18,
+      "display_name": "acosh",
+      "arg_count": 1,
+      "aliases": [
+        "arccosh",
+        "inverse_cosh"
+      ],
+      "metal": "acosh(x)",
+      "fast_enabled": 0
+    },
+    "atanh": {
+      "opcode": 19,
+      "display_name": "atanh",
+      "arg_count": 1,
+      "aliases": [
+        "arctanh",
+        "inverse_tanh"
+      ],
+      "metal": "atanh(x)",
+      "fast_enabled": 0
+    },
+    "abs": {
+      "opcode": 20,
+      "display_name": "abs",
+      "arg_count": 1,
+      "aliases": [
+        "absolute",
+        "fabs",
+        "magnitude"
+      ],
+      "metal": "fabs(x)",
+      "fast_enabled": 0
+    },
+    "floor": {
+      "opcode": 21,
+      "display_name": "floor",
+      "arg_count": 1,
+      "aliases": [],
+      "metal": "floor(x)",
+      "fast_enabled": 0
+    },
+    "ceil": {
+      "opcode": 22,
+      "display_name": "ceil",
+      "arg_count": 1,
+      "aliases": [
+        "ceiling"
+      ],
+      "metal": "ceil(x)",
+      "fast_enabled": 0
+    },
+    "round": {
+      "opcode": 23,
+      "display_name": "round",
+      "arg_count": 1,
+      "aliases": [
+        "rint",
+        "around"
+      ],
+      "metal": "rint(x)",
+      "fast_enabled": 0
+    },
+    "trunc": {
+      "opcode": 24,
+      "display_name": "trunc",
+      "arg_count": 1,
+      "aliases": [
+        "truncate",
+        "fix"
+      ],
+      "metal": "trunc(x)",
+      "fast_enabled": 0
+    },
+    "power": {
+      "opcode": 25,
+      "display_name": "pow",
+      "arg_count": 2,
+      "aliases": [
+        "power",
+        "**"
+      ],
+      "metal": "pow(a, b)",
+      "fast_enabled": 0
+    },
+    "log10": {
+      "opcode": 26,
+      "display_name": "log10",
+      "arg_count": 1,
+      "aliases": [
+        "logarithm10",
+        "log_10"
+      ],
+      "metal": "log10(x)",
+      "fast_enabled": 0
+    },
+    "log2": {
+      "opcode": 27,
+      "display_name": "log2",
+      "arg_count": 1,
+      "aliases": [
+        "logarithm2",
+        "log_2"
+      ],
+      "metal": "log2(x)",
+      "fast_enabled": 0
+    },
+    "exp2": {
+      "opcode": 28,
+      "display_name": "exp2",
+      "arg_count": 1,
+      "aliases": [
+        "exp_2",
+        "pow2"
+      ],
+      "metal": "exp2(x)",
+      "fast_enabled": 0
+    },
+    "expm1": {
+      "opcode": 29,
+      "display_name": "expm1",
+      "arg_count": 1,
+      "aliases": [
+        "exp_minus_1"
+      ],
+      "metal": "exp(x) - 1.0f",
+      "fast_enabled": 1
+    },
+    "log1p": {
+      "opcode": 30,
+      "display_name": "log1p",
+      "arg_count": 1,
+      "aliases": [
+        "log_1_plus"
+      ],
+      "metal": "log(1.0f + x)",
+      "fast_enabled": 1
+    },
+    "cbrt": {
+      "opcode": 31,
+      "display_name": "cbrt",
+      "arg_count": 1,
+      "aliases": [
+        "cuberoot",
+        "cube_root"
+      ],
+      "metal": "x < 0.0f ? -pow(-x, 0.333333333f) : pow(x, 0.333333333f)",
+      "fast_enabled": 0
+    },
+    "hypot": {
+      "opcode": 32,
+      "display_name": "hypot",
+      "arg_count": 2,
+      "aliases": ["hypotenuse", "euclidean"],
+      "metal": "sqrt(a*a + b*b)",
+      "fast_enabled": 0
+    },
+    "fmod": {
+      "opcode": 33,
+      "display_name": "fmod",
+      "arg_count": 2,
+      "aliases": [
+        "mod",
+        "modulo"
+      ],
+      "metal": "fmod(a, b)",
+      "fast_enabled": 0
+    },
+    "remainder": {
+      "opcode": 34,
+      "display_name": "remainder",
+      "arg_count": 2,
+      "aliases": ["rem"],
+      "metal": "fmod(a, b)",
+      "fast_enabled": 0
+    },
+    "copysign": {
+      "opcode": 35,
+      "display_name": "copysign",
+      "arg_count": 2,
+      "aliases": [
+        "copy_sign"
+      ],
+      "metal": "copysign(a, b)",
+      "fast_enabled": 0
+    },
+    "fmax": {
+      "opcode": 36,
+      "display_name": "max",
+      "arg_count": 2,
+      "aliases": [
+        "maximum",
+        "fmax"
+      ],
+      "metal": "fmax(a, b)",
+      "fast_enabled": 0
+    },
+    "fmin": {
+      "opcode": 37,
+      "display_name": "min",
+      "arg_count": 2,
+      "aliases": [
+        "minimum",
+        "fmin"
+      ],
+      "metal": "fmin(a, b)",
+      "fast_enabled": 0
+    },
+    "fdim": {
+      "opcode": 38,
+      "display_name": "fdim",
+      "arg_count": 2,
+      "aliases": [
+        "positive_difference",
+        "pdiff"
+      ],
+      "metal": "fdim(a, b)",
+      "fast_enabled": 0
+    },
+    "fma": {
+      "opcode": 39,
+      "display_name": "fma",
+      "arg_count": 3,
+      "aliases": [
+        "fused_multiply_add",
+        "muladd"
+      ],
+      "metal": "fma(a, b, c)",
+      "fast_enabled": 0
+    },
+    "erf": {
+      "opcode": 40,
+      "display_name": "erf",
+      "arg_count": 1,
+      "aliases": [
+        "error_function"
+      ],
+      "metal": "x >= 0.0f ? (x < 1.0f ? 0.84f * x : 0.995f) : -0.995f",
+      "fast_enabled": 0
+    },
+    "erfc": {
+      "opcode": 41,
+      "display_name": "erfc",
+      "arg_count": 1,
+      "aliases": [
+        "complementary_error_function",
+        "comp_erf"
+      ],
+      "metal": "x >= 0.0f ? (x < 1.0f ? 1.0f - 0.84f * x : 0.005f) : 1.995f",
+      "fast_enabled": 0
+    },
+    "tgamma": {
+      "opcode": 42,
+      "display_name": "gamma",
+      "arg_count": 1,
+      "aliases": [
+        "tgamma",
+        "gamma_function"
+      ],
+      "metal": "x >= 1.0f && x <= 5.0f ? (int(x) <= 2 ? 1.0f : 24.0f) : 1.0f",
+      "fast_enabled": 0
+    },
+    "lgamma": {
+      "opcode": 43,
+      "display_name": "lgamma",
+      "arg_count": 1,
+      "aliases": [
+        "log_gamma",
+        "loggamma"
+      ],
+      "metal": "x >= 1.0f ? (x < 3.0f ? 0.0f : 3.178f) : 0.0f",
+      "fast_enabled": 0
+    },
+    "sign": {
+      "opcode": 44,
+      "display_name": "sign",
+      "arg_count": 1,
+      "aliases": [
+        "signum",
+        "sgn"
+      ],
+      "metal": "sign(x)",
+      "fast_enabled": 0
+    },
+    "reciprocal": {
+      "opcode": 45,
+      "display_name": "reciprocal",
+      "arg_count": 1,
+      "aliases": [
+        "recip",
+        "inverse"
+      ],
+      "metal": "1.0f / x",
+      "fast_enabled": 0
+    },
+    "square": {
+      "opcode": 46,
+      "display_name": "square",
+      "arg_count": 1,
+      "aliases": [
+        "sqr",
+        "pow2"
+      ],
+      "metal": "x * x",
+      "fast_enabled": 0
+    },
+    "negative": {
+      "opcode": 47,
+      "display_name": "neg",
+      "arg_count": 1,
+      "aliases": [
+        "negative",
+        "negate"
+      ],
+      "metal": "-x",
+      "fast_enabled": 0
+    },
+    "positive": {
+      "opcode": 48,
+      "display_name": "pos",
+      "arg_count": 1,
+      "aliases": [
+        "positive"
+      ],
+      "metal": "+x",
+      "fast_enabled": 0
+    },
+    "radians": {
+      "opcode": 49,
+      "display_name": "radians",
+      "arg_count": 1,
+      "aliases": [
+        "deg2rad",
+        "to_radians"
+      ],
+      "metal": "x * 0.017453292519943295f",
+      "fast_enabled": 0
+    },
+    "degrees": {
+      "opcode": 50,
+      "display_name": "degrees",
+      "arg_count": 1,
+      "aliases": [
+        "rad2deg",
+        "to_degrees"
+      ],
+      "metal": "x * 57.29577951308232f",
+      "fast_enabled": 0
+    },
+    "logaddexp": {
+      "opcode": 51,
+      "display_name": "logaddexp",
+      "arg_count": 2,
+      "aliases": [
+        "log_add_exp"
+      ],
+      "metal": "log(exp(a) + exp(b))",
+      "fast_enabled": 1
+    },
+    "logaddexp2": {
+      "opcode": 52,
+      "display_name": "logaddexp2",
+      "arg_count": 2,
+      "aliases": [
+        "log_add_exp2"
+      ],
+      "metal": "log2(exp2(a) + exp2(b))",
+      "fast_enabled": 1
+    },
+    "heaviside": {
+      "opcode": 53,
+      "display_name": "heaviside",
+      "arg_count": 2,
+      "aliases": [
+        "step_function",
+        "unit_step"
+      ],
+      "metal": "a < 0.0f ? 0.0f : (a > 0.0f ? 1.0f : b)",
+      "fast_enabled": 0
+    },
+    "isnan": {
+      "opcode": 54,
+      "display_name": "isnan",
+      "arg_count": 1,
+      "aliases": [
+        "is_nan"
+      ],
+      "metal": "isnan(x) ? 1.0f : 0.0f",
+      "fast_enabled": 0
+    },
+    "isinf": {
+      "opcode": 55,
+      "display_name": "isinf",
+      "arg_count": 1,
+      "aliases": [
+        "is_inf",
+        "is_infinite"
+      ],
+      "metal": "isinf(x) ? 1.0f : 0.0f",
+      "fast_enabled": 0
+    },
+    "isfinite": {
+      "opcode": 56,
+      "display_name": "isfinite",
+      "arg_count": 1,
+      "aliases": [
+        "is_finite"
+      ],
+      "metal": "isfinite(x) ? 1.0f : 0.0f",
+      "fast_enabled": 0
+    },
+    "ldexp": {
+      "opcode": 57,
+      "display_name": "ldexp",
+      "arg_count": 2,
+      "aliases": [
+        "load_exponent"
+      ],
+      "metal": "ldexp(a, (int)b)",
+      "fast_enabled": 0
+    },
+    "frexp": {
+      "opcode": 58,
+      "display_name": "frexp",
+      "arg_count": 1,
+      "aliases": [
+        "extract_exponent"
+      ],
+      "metal": "x",
+      "fast_enabled": 0
+    },
+    "modf": {
+      "opcode": 59,
+      "display_name": "modf",
+      "arg_count": 1,
+      "aliases": [
+        "modulus_fraction"
+      ],
+      "metal": "x",
+      "fast_enabled": 0
+    },
+    "nextafter": {
+      "opcode": 60,
+      "display_name": "nextafter",
+      "arg_count": 2,
+      "aliases": [
+        "next_after"
+      ],
+      "metal": "a",
+      "fast_enabled": 0
+    },
+    "clamp": {
+      "opcode": 61,
+      "display_name": "clamp",
+      "arg_count": 3,
+      "aliases": [
+        "clip",
+        "constrain"
+      ],
+      "metal": "clamp(a, b, c)",
+      "fast_enabled": 0
+    },
+    "mix": {
+      "opcode": 62,
+      "display_name": "mix",
+      "arg_count": 3,
+      "aliases": [
+        "lerp",
+        "linear_interpolate",
+        "blend"
+      ],
+      "metal": "mix(a, b, c)",
+      "fast_enabled": 0
+    },
+    "smoothstep": {
+      "opcode": 63,
+      "display_name": "smoothstep",
+      "arg_count": 3,
+      "aliases": [
+        "smooth_step"
+      ],
+      "metal": "smoothstep(a, b, c)",
+      "fast_enabled": 0
+    },
+    "step": {
+      "opcode": 64,
+      "display_name": "step",
+      "arg_count": 2,
+      "aliases": [
+        "threshold"
+      ],
+      "metal": "step(a, b)",
+      "fast_enabled": 0
+    },
+    "rsqrt": {
+      "opcode": 65,
+      "display_name": "rsqrt",
+      "arg_count": 1,
+      "aliases": [
+        "invsqrt",
+        "inverse_sqrt"
+      ],
+      "metal": "rsqrt(x)",
+      "fast_enabled": 1
+    },
+    "fract": {
+      "opcode": 66,
+      "display_name": "fract",
+      "arg_count": 1,
+      "aliases": [
+        "fractional",
+        "frac"
+      ],
+      "metal": "fract(x)",
+      "fast_enabled": 0
+    },
+    "saturate": {
+      "opcode": 67,
+      "display_name": "saturate",
+      "arg_count": 1,
+      "aliases": [
+        "sat",
+        "clamp01"
+      ],
+      "metal": "saturate(x)",
+      "fast_enabled": 0
+    },
+    "bitwise_and": {
+      "opcode": 68,
+      "display_name": "bitwise_and",
+      "arg_count": 2,
+      "aliases": [
+        "band",
+        "bit_and"
+      ],
+      "metal": "as_type<float>(as_type<uint>(a) & as_type<uint>(b))",
+      "fast_enabled": 0
+    },
+    "bitwise_or": {
+      "opcode": 69,
+      "display_name": "bitwise_or",
+      "arg_count": 2,
+      "aliases": [
+        "bor",
+        "bit_or"
+      ],
+      "metal": "as_type<float>(as_type<uint>(a) | as_type<uint>(b))",
+      "fast_enabled": 0
+    },
+    "bitwise_xor": {
+      "opcode": 70,
+      "display_name": "bitwise_xor",
+      "arg_count": 2,
+      "aliases": [
+        "bxor",
+        "bit_xor"
+      ],
+      "metal": "as_type<float>(as_type<uint>(a) ^ as_type<uint>(b))",
+      "fast_enabled": 0
+    },
+    "bitwise_not": {
+      "opcode": 71,
+      "display_name": "bitwise_not",
+      "arg_count": 1,
+      "aliases": [
+        "bnot",
+        "bit_not",
+        "invert"
+      ],
+      "metal": "as_type<float>(~as_type<uint>(x))",
+      "fast_enabled": 0
+    },
+    "left_shift": {
+      "opcode": 72,
+      "display_name": "left_shift",
+      "arg_count": 2,
+      "aliases": [
+        "lshift",
+        "shl",
+        "shift_left"
+      ],
+      "metal": "as_type<float>(as_type<uint>(a) << (uint)b)",
+      "fast_enabled": 0
+    },
+    "right_shift": {
+      "opcode": 73,
+      "display_name": "right_shift",
+      "arg_count": 2,
+      "aliases": [
+        "rshift",
+        "shr",
+        "shift_right"
+      ],
+      "metal": "as_type<float>(as_type<uint>(a) >> (uint)b)",
+      "fast_enabled": 0
+    },
+    "logical_and": {
+      "opcode": 74,
+      "display_name": "logical_and",
+      "arg_count": 2,
+      "aliases": [
+        "land",
+        "and"
+      ],
+      "metal": "(a != 0.0f && b != 0.0f) ? 1.0f : 0.0f",
+      "fast_enabled": 0
+    },
+    "logical_or": {
+      "opcode": 75,
+      "display_name": "logical_or",
+      "arg_count": 2,
+      "aliases": [
+        "lor",
+        "or"
+      ],
+      "metal": "(a != 0.0f || b != 0.0f) ? 1.0f : 0.0f",
+      "fast_enabled": 0
+    },
+    "logical_not": {
+      "opcode": 76,
+      "display_name": "logical_not",
+      "arg_count": 1,
+      "aliases": [
+        "lnot",
+        "not"
+      ],
+      "metal": "(x == 0.0f) ? 1.0f : 0.0f",
+      "fast_enabled": 0
+    },
+    "logical_xor": {
+      "opcode": 77,
+      "display_name": "logical_xor",
+      "arg_count": 2,
+      "aliases": [
+        "lxor",
+        "xor"
+      ],
+      "metal": "((a != 0.0f) != (b != 0.0f)) ? 1.0f : 0.0f",
+      "fast_enabled": 0
+    },
+    "greater": {
+      "opcode": 78,
+      "display_name": "greater",
+      "arg_count": 2,
+      "aliases": [
+        "gt"
+      ],
+      "metal": "(a > b) ? 1.0f : 0.0f",
+      "fast_enabled": 0
+    },
+    "greater_equal": {
+      "opcode": 79,
+      "display_name": "greater_equal",
+      "arg_count": 2,
+      "aliases": [
+        "ge",
+        "gte"
+      ],
+      "metal": "(a >= b) ? 1.0f : 0.0f",
+      "fast_enabled": 0
+    },
+    "less": {
+      "opcode": 80,
+      "display_name": "less",
+      "arg_count": 2,
+      "aliases": [
+        "lt"
+      ],
+      "metal": "(a < b) ? 1.0f : 0.0f",
+      "fast_enabled": 0
+    },
+    "less_equal": {
+      "opcode": 81,
+      "display_name": "less_equal",
+      "arg_count": 2,
+      "aliases": [
+        "le",
+        "lte"
+      ],
+      "metal": "(a <= b) ? 1.0f : 0.0f",
+      "fast_enabled": 0
+    },
+    "equal": {
+      "opcode": 82,
+      "display_name": "equal",
+      "arg_count": 2,
+      "aliases": [
+        "eq"
+      ],
+      "metal": "(a == b) ? 1.0f : 0.0f",
+      "fast_enabled": 0
+    },
+    "not_equal": {
+      "opcode": 83,
+      "display_name": "not_equal",
+      "arg_count": 2,
+      "aliases": [
+        "ne",
+        "neq"
+      ],
+      "metal": "(a != b) ? 1.0f : 0.0f",
+      "fast_enabled": 0
+    },
+    "sinc": {
+      "opcode": 84,
+      "display_name": "sinc",
+      "arg_count": 1,
+      "aliases": [
+        "cardinal_sine"
+      ],
+      "metal": "x == 0.0f ? 1.0f : sin(x) / x",
+      "fast_enabled": 1
+    },
+    "sinpi": {
+      "opcode": 85,
+      "display_name": "sinpi",
+      "arg_count": 1,
+      "aliases": [
+        "sin_pi"
+      ],
+      "metal": "sin(x * M_PI_F)",
+      "fast_enabled": 1
+    },
+    "cospi": {
+      "opcode": 86,
+      "display_name": "cospi",
+      "arg_count": 1,
+      "aliases": [
+        "cos_pi"
+      ],
+      "metal": "cos(x * M_PI_F)",
+      "fast_enabled": 1
+    },
+    "tanpi": {
+      "opcode": 87,
+      "display_name": "tanpi",
+      "arg_count": 1,
+      "aliases": [
+        "tan_pi"
+      ],
+      "metal": "tan(x * M_PI_F)",
+      "fast_enabled": 1
+    },
+    "deg2rad": {
+      "opcode": 88,
+      "display_name": "deg2rad",
+      "arg_count": 1,
+      "aliases": [
+        "degrees_to_radians"
+      ],
+      "metal": "x * 0.017453292519943295f",
+      "fast_enabled": 0
+    },
+    "rad2deg": {
+      "opcode": 89,
+      "display_name": "rad2deg",
+      "arg_count": 1,
+      "aliases": [
+        "radians_to_degrees"
+      ],
+      "metal": "x * 57.29577951308232f",
+      "fast_enabled": 0
+    },
+    "sec": {
+      "opcode": 90,
+      "display_name": "sec",
+      "arg_count": 1,
+      "aliases": [
+        "secant"
+      ],
+      "metal": "1.0f / cos(x)",
+      "fast_enabled": 1
+    },
+    "csc": {
+      "opcode": 91,
+      "display_name": "csc",
+      "arg_count": 1,
+      "aliases": [
+        "cosecant"
+      ],
+      "metal": "1.0f / sin(x)",
+      "fast_enabled": 1
+    },
+    "cot": {
+      "opcode": 92,
+      "display_name": "cot",
+      "arg_count": 1,
+      "aliases": [
+        "cotangent"
+      ],
+      "metal": "1.0f / tan(x)",
+      "fast_enabled": 1
+    },
+    "asec": {
+      "opcode": 93,
+      "display_name": "asec",
+      "arg_count": 1,
+      "aliases": [
+        "arcsec",
+        "arcsecant"
+      ],
+      "metal": "acos(1.0f / x)",
+      "fast_enabled": 0
+    },
+    "acsc": {
+      "opcode": 94,
+      "display_name": "acsc",
+      "arg_count": 1,
+      "aliases": [
+        "arccsc",
+        "arccosecant"
+      ],
+      "metal": "asin(1.0f / x)",
+      "fast_enabled": 0
+    },
+    "acot": {
+      "opcode": 95,
+      "display_name": "acot",
+      "arg_count": 1,
+      "aliases": [
+        "arccot",
+        "arccotangent"
+      ],
+      "metal": "atan(1.0f / x)",
+      "fast_enabled": 0
+    },
+    "sech": {
+      "opcode": 96,
+      "display_name": "sech",
+      "arg_count": 1,
+      "aliases": [
+        "hyperbolic_secant"
+      ],
+      "metal": "1.0f / cosh(x)",
+      "fast_enabled": 0
+    },
+    "csch": {
+      "opcode": 97,
+      "display_name": "csch",
+      "arg_count": 1,
+      "aliases": [
+        "hyperbolic_cosecant"
+      ],
+      "metal": "1.0f / sinh(x)",
+      "fast_enabled": 0
+    },
+    "coth": {
+      "opcode": 98,
+      "display_name": "coth",
+      "arg_count": 1,
+      "aliases": [
+        "hyperbolic_cotangent"
+      ],
+      "metal": "1.0f / tanh(x)",
+      "fast_enabled": 0
+    },
+    "asech": {
+      "opcode": 99,
+      "display_name": "asech",
+      "arg_count": 1,
+      "aliases": [
+        "arcsech",
+        "inverse_sech"
+      ],
+      "metal": "acosh(1.0f / x)",
+      "fast_enabled": 0
+    },
+    "acsch": {
+      "opcode": 100,
+      "display_name": "acsch",
+      "arg_count": 1,
+      "aliases": [
+        "arccsch",
+        "inverse_csch"
+      ],
+      "metal": "asinh(1.0f / x)",
+      "fast_enabled": 0
+    },
+    "acoth": {
+      "opcode": 101,
+      "display_name": "acoth",
+      "arg_count": 1,
+      "aliases": [
+        "arccoth",
+        "inverse_coth"
+      ],
+      "metal": "atanh(1.0f / x)",
+      "fast_enabled": 0
+    },
+    "cube": {
+      "opcode": 105,
+      "display_name": "cube",
+      "arg_count": 1,
+      "aliases": [
+        "pow3"
+      ],
+      "metal": "x * x * x",
+      "fast_enabled": 0
+    },
+    "quartic": {
+      "opcode": 106,
+      "display_name": "quartic",
+      "arg_count": 1,
+      "aliases": [
+        "pow4",
+        "fourth_power"
+      ],
+      "metal": "x * x * x * x",
+      "fast_enabled": 0
+    },
+    "quintic": {
+      "opcode": 107,
+      "display_name": "quintic",
+      "arg_count": 1,
+      "aliases": [
+        "pow5",
+        "fifth_power"
+      ],
+      "metal": "x * x * x * x * x",
+      "fast_enabled": 0
+    },
+    "sigmoid": {
+      "opcode": 108,
+      "display_name": "sigmoid",
+      "arg_count": 1,
+      "aliases": [
+        "logistic"
+      ],
+      "metal": "1.0f / (1.0f + exp(-x))",
+      "fast_enabled": 1
+    },
+    "relu": {
+      "opcode": 109,
+      "display_name": "relu",
+      "arg_count": 1,
+      "aliases": [
+        "rectified_linear"
+      ],
+      "metal": "fmax(0.0f, x)",
+      "fast_enabled": 0
+    },
+    "leaky_relu": {
+      "opcode": 110,
+      "display_name": "leaky_relu",
+      "arg_count": 2,
+      "aliases": [
+        "lrelu"
+      ],
+      "metal": "a > 0.0f ? a : b * a",
+      "fast_enabled": 0
+    },
+    "elu": {
+      "opcode": 111,
+      "display_name": "elu",
+      "arg_count": 2,
+      "aliases": [
+        "exponential_linear_unit"
+      ],
+      "metal": "a >= 0.0f ? a : b * (exp(a) - 1.0f)",
+      "fast_enabled": 1
+    },
+    "selu": {
+      "opcode": 112,
+      "display_name": "selu",
+      "arg_count": 1,
+      "aliases": [
+        "scaled_elu"
+      ],
+      "metal": "1.0507f * (x >= 0.0f ? x : 1.67326f * (exp(x) - 1.0f))",
+      "fast_enabled": 1
+    },
+    "gelu": {
+      "opcode": 113,
+      "display_name": "gelu",
+      "arg_count": 1,
+      "aliases": [
+        "gaussian_error_linear_unit"
+      ],
+      "metal": "0.5f * x * (1.0f + tanh(0.7978845608f * (x + 0.044715f * x * x * x)))",
+      "fast_enabled": 0
+    },
+    "swish": {
+      "opcode": 114,
+      "display_name": "swish",
+      "arg_count": 1,
+      "aliases": [
+        "silu"
+      ],
+      "metal": "x / (1.0f + exp(-x))",
+      "fast_enabled": 1
+    },
+    "mish": {
+      "opcode": 115,
+      "display_name": "mish",
+      "arg_count": 1,
+      "aliases": [],
+      "metal": "x * tanh(log(1.0f + exp(x)))",
+      "fast_enabled": 1
+    },
+    "softplus": {
+      "opcode": 116,
+      "display_name": "softplus",
+      "arg_count": 1,
+      "aliases": [],
+      "metal": "log(1.0f + exp(x))",
+      "fast_enabled": 1
+    },
+    "softsign": {
+      "opcode": 117,
+      "display_name": "softsign",
+      "arg_count": 1,
+      "aliases": [],
+      "metal": "x / (1.0f + fabs(x))",
+      "fast_enabled": 0
+    },
+    "hard_sigmoid": {
+      "opcode": 118,
+      "display_name": "hard_sigmoid",
+      "arg_count": 1,
+      "aliases": [
+        "hardsigmoid"
+      ],
+      "metal": "clamp(0.2f * x + 0.5f, 0.0f, 1.0f)",
+      "fast_enabled": 0
+    },
+    "hard_tanh": {
+      "opcode": 119,
+      "display_name": "hard_tanh",
+      "arg_count": 1,
+      "aliases": [
+        "hardtanh"
+      ],
+      "metal": "clamp(x, -1.0f, 1.0f)",
+      "fast_enabled": 0
+    },
+    "prelu": {
+      "opcode": 120,
+      "display_name": "prelu",
+      "arg_count": 2,
+      "aliases": [
+        "parametric_relu"
+      ],
+      "metal": "a > 0.0f ? a : b * a",
+      "fast_enabled": 0
+    },
+    "rrelu": {
+      "opcode": 121,
+      "display_name": "rrelu",
+      "arg_count": 2,
+      "aliases": [
+        "randomized_relu"
+      ],
+      "metal": "a > 0.0f ? a : b * a",
+      "fast_enabled": 0
+    },
+    "celu": {
+      "opcode": 122,
+      "display_name": "celu",
+      "arg_count": 2,
+      "aliases": [
+        "continuously_differentiable_elu"
+      ],
+      "metal": "a >= 0.0f ? a : b * (exp(a / b) - 1.0f)",
+      "fast_enabled": 1
+    },
+    "gaussian": {
+      "opcode": 123,
+      "display_name": "gaussian",
+      "arg_count": 1,
+      "aliases": [
+        "gauss"
+      ],
+      "metal": "exp(-x * x)",
+      "fast_enabled": 1
+    },
+    "bent_identity": {
+      "opcode": 124,
+      "display_name": "bent_identity",
+      "arg_count": 1,
+      "aliases": [],
+      "metal": "(sqrt(x * x + 1.0f) - 1.0f) / 2.0f + x",
+      "fast_enabled": 0
+    },
+    "identity": {
+      "opcode": 125,
+      "display_name": "identity",
+      "arg_count": 1,
+      "aliases": [
+        "linear"
+      ],
+      "metal": "x",
+      "fast_enabled": 0
+    },
+    "binary_step": {
+      "opcode": 126,
+      "display_name": "binary_step",
+      "arg_count": 1,
+      "aliases": [
+        "threshold_step"
+      ],
+      "metal": "x >= 0.0f ? 1.0f : 0.0f",
+      "fast_enabled": 0
+    },
+    "bipolar_step": {
+      "opcode": 127,
+      "display_name": "bipolar_step",
+      "arg_count": 1,
+      "aliases": [],
+      "metal": "x >= 0.0f ? 1.0f : -1.0f",
+      "fast_enabled": 0
+    },
+    "normalize": {
+      "opcode": 128,
+      "display_name": "normalize",
+      "arg_count": 3,
+      "aliases": [
+        "norm"
+      ],
+      "metal": "(a - b) / (c - b)",
+      "fast_enabled": 0
+    },
+    "denormalize": {
+      "opcode": 129,
+      "display_name": "denormalize",
+      "arg_count": 3,
+      "aliases": [
+        "denorm"
+      ],
+      "metal": "a * (c - b) + b",
+      "fast_enabled": 0
+    },
+    "map_range": {
+      "opcode": 130,
+      "display_name": "map_range",
+      "arg_count": 5,
+      "aliases": [
+        "remap"
+      ],
+      "metal": "(a - b) / (c - b) * (e - d) + d",
+      "fast_enabled": 0
+    },
+    "wrap": {
+      "opcode": 131,
+      "display_name": "wrap",
+      "arg_count": 3,
+      "aliases": [
+        "wraparound"
+      ],
+      "metal": "fmod(fmod(a - b, c - b) + (c - b), c - b) + b",
+      "fast_enabled": 0
+    },
+    "ping_pong": {
+      "opcode": 132,
+      "display_name": "ping_pong",
+      "arg_count": 2,
+      "aliases": [
+        "pingpong"
+      ],
+      "metal": "b - fabs(fmod(a, 2.0f * b) - b)",
+      "fast_enabled": 0
+    },
+    "gamma_correct": {
+      "opcode": 133,
+      "display_name": "gamma_correct",
+      "arg_count": 2,
+      "aliases": [
+        "gamma"
+      ],
+      "metal": "pow(a, 1.0f / b)",
+      "fast_enabled": 0
+    },
+    "inverse_gamma": {
+      "opcode": 134,
+      "display_name": "inverse_gamma",
+      "arg_count": 2,
+      "aliases": [
+        "degamma"
+      ],
+      "metal": "pow(a, b)",
+      "fast_enabled": 0
+    },
+    "srgb_to_linear": {
+      "opcode": 135,
+      "display_name": "srgb_to_linear",
+      "arg_count": 1,
+      "aliases": [
+        "srgb2linear"
+      ],
+      "metal": "x <= 0.04045f ? x / 12.92f : pow((x + 0.055f) / 1.055f, 2.4f)",
+      "fast_enabled": 0
+    },
+    "linear_to_srgb": {
+      "opcode": 136,
+      "display_name": "linear_to_srgb",
+      "arg_count": 1,
+      "aliases": [
+        "linear2srgb"
+      ],
+      "metal": "x <= 0.0031308f ? x * 12.92f : 1.055f * pow(x, 1.0f / 2.4f) - 0.055f",
+      "fast_enabled": 0
+    },
+    "smootherstep": {
+      "opcode": 137,
+      "display_name": "smootherstep",
+      "arg_count": 3,
+      "aliases": [
+        "smoother_step"
+      ],
+      "metal": "clamp((a - b) / (c - b), 0.0f, 1.0f) * a * a * a * (a * (a * 6.0f - 15.0f) + 10.0f)",
+      "fast_enabled": 0
+    },
+    "inverse_smoothstep": {
+      "opcode": 138,
+      "display_name": "inverse_smoothstep",
+      "arg_count": 1,
+      "aliases": [
+        "inv_smoothstep"
+      ],
+      "metal": "0.5f - sin(asin(1.0f - 2.0f * x) / 3.0f)",
+      "fast_enabled": 0
+    },
+    "bezier_quadratic": {
+      "opcode": 140,
+      "display_name": "bezier_quadratic",
+      "arg_count": 4,
+      "aliases": [
+        "quad_bezier"
+      ],
+      "metal": "(1.0f - d) * (1.0f - d) * a + 2.0f * (1.0f - d) * d * b + d * d * c",
+      "fast_enabled": 0
+    },
+    "bezier_cubic": {
+      "opcode": 141,
+      "display_name": "bezier_cubic",
+      "arg_count": 5,
+      "aliases": [
+        "cubic_bezier"
+      ],
+      "metal": "pow(1.0f - e, 3.0f) * a + 3.0f * pow(1.0f - e, 2.0f) * e * b + 3.0f * (1.0f - e) * e * e * c + e * e * e * d",
+      "fast_enabled": 0
+    },
+    "noise_white": {
+      "opcode": 143,
+      "display_name": "noise_white",
+      "arg_count": 1,
+      "aliases": [
+        "white_noise"
+      ],
+      "metal": "fract(sin(x) * 43758.5453123f)",
+      "fast_enabled": 1
+    },
+    "hash": {
+      "opcode": 147,
+      "display_name": "hash",
+      "arg_count": 1,
+      "aliases": [
+        "hash_float"
+      ],
+      "metal": "fract(sin(x * 12.9898f) * 43758.5453123f)",
+      "fast_enabled": 1
+    },
+    "hash2": {
+      "opcode": 148,
+      "display_name": "hash2",
+      "arg_count": 2,
+      "aliases": [
+        "hash_float2"
+      ],
+      "metal": "fract(sin(a * 12.9898f + b * 78.233f) * 43758.5453123f)",
+      "fast_enabled": 1
+    },
+    "distance_euclidean": {
+      "opcode": 149,
+      "display_name": "distance",
+      "arg_count": 2,
+      "aliases": [
+        "dist",
+        "euclidean_distance"
+      ],
+      "metal": "fabs(a - b)",
+      "fast_enabled": 0
+    },
+    "distance_manhattan": {
+      "opcode": 150,
+      "display_name": "manhattan",
+      "arg_count": 2,
+      "aliases": [
+        "taxicab",
+        "city_block"
+      ],
+      "metal": "fabs(a - b)",
+      "fast_enabled": 0
+    },
+    "distance_chebyshev": {
+      "opcode": 151,
+      "display_name": "chebyshev",
+      "arg_count": 2,
+      "aliases": [
+        "chessboard"
+      ],
+      "metal": "fmax(fabs(a - b), 0.0f)",
+      "fast_enabled": 0
+    },
+    "distance_minkowski": {
+      "opcode": 152,
+      "display_name": "minkowski",
+      "arg_count": 3,
+      "aliases": [],
+      "metal": "pow(pow(fabs(a - b), c), 1.0f / c)",
+      "fast_enabled": 0
+    },
+    "length": {
+      "opcode": 153,
+      "display_name": "length",
+      "arg_count": 1,
+      "aliases": [
+        "magnitude"
+      ],
+      "metal": "fabs(x)",
+      "fast_enabled": 0
+    },
+    "normalize_vector": {
+      "opcode": 154,
+      "display_name": "normalize_vector",
+      "arg_count": 1,
+      "aliases": [
+        "unit_vector"
+      ],
+      "metal": "x / fabs(x)",
+      "fast_enabled": 0
+    },
+    "normal_pdf": {
+      "opcode": 162,
+      "display_name": "normal_pdf",
+      "arg_count": 3,
+      "aliases": [
+        "gaussian_pdf"
+      ],
+      "metal": "(1.0f / (c * sqrt(2.0f * M_PI_F))) * exp(-0.5f * pow((a - b) / c, 2.0f))",
+      "fast_enabled": 1
+    },
+    "exponential_pdf": {
+      "opcode": 164,
+      "display_name": "exponential_pdf",
+      "arg_count": 2,
+      "aliases": [
+        "exp_pdf"
+      ],
+      "metal": "a >= 0.0f ? b * exp(-b * a) : 0.0f",
+      "fast_enabled": 1
+    },
+    "exponential_cdf": {
+      "opcode": 165,
+      "display_name": "exponential_cdf",
+      "arg_count": 2,
+      "aliases": [
+        "exp_cdf"
+      ],
+      "metal": "a >= 0.0f ? 1.0f - exp(-b * a) : 0.0f",
+      "fast_enabled": 1
+    },
+    "uniform_pdf": {
+      "opcode": 166,
+      "display_name": "uniform_pdf",
+      "arg_count": 3,
+      "aliases": [],
+      "metal": "(a >= b && a <= c) ? 1.0f / (c - b) : 0.0f",
+      "fast_enabled": 0
+    },
+    "uniform_cdf": {
+      "opcode": 167,
+      "display_name": "uniform_cdf",
+      "arg_count": 3,
+      "aliases": [],
+      "metal": "a < b ? 0.0f : (a > c ? 1.0f : (a - b) / (c - b))",
+      "fast_enabled": 0
+    },
+    "softmax": {
+      "opcode": 190,
+      "display_name": "softmax",
+      "arg_count": 2,
+      "aliases": [],
+      "metal": "exp(a) / (exp(a) + exp(b))",
+      "fast_enabled": 1
+    },
+    "log_softmax": {
+      "opcode": 191,
+      "display_name": "log_softmax",
+      "arg_count": 2,
+      "aliases": [],
+      "metal": "a - log(exp(a) + exp(b))",
+      "fast_enabled": 1
+    },
+    "kl_divergence": {
+      "opcode": 192,
+      "display_name": "kl_divergence",
+      "arg_count": 2,
+      "aliases": [
+        "kullback_leibler"
+      ],
+      "metal": "a * log(a / b)",
+      "fast_enabled": 1
+    },
+    "cross_entropy": {
+      "opcode": 193,
+      "display_name": "cross_entropy",
+      "arg_count": 2,
+      "aliases": [],
+      "metal": "-a * log(b)",
+      "fast_enabled": 1
+    },
+    "binary_cross_entropy": {
+      "opcode": 194,
+      "display_name": "binary_cross_entropy",
+      "arg_count": 2,
+      "aliases": [
+        "bce"
+      ],
+      "metal": "-(a * log(b) + (1.0f - a) * log(1.0f - b))",
+      "fast_enabled": 1
+    },
+    "huber_loss": {
+      "opcode": 195,
+      "display_name": "huber_loss",
+      "arg_count": 3,
+      "aliases": [
+        "huber"
+      ],
+      "metal": "fabs(a - b) <= c ? 0.5f * pow(a - b, 2.0f) : c * (fabs(a - b) - 0.5f * c)",
+      "fast_enabled": 0
+    },
+    "hinge_loss": {
+      "opcode": 196,
+      "display_name": "hinge_loss",
+      "arg_count": 2,
+      "aliases": [
+        "hinge"
+      ],
+      "metal": "fmax(0.0f, 1.0f - a * b)",
+      "fast_enabled": 0
+    },
+    "squared_hinge": {
+      "opcode": 197,
+      "display_name": "squared_hinge",
+      "arg_count": 2,
+      "aliases": [],
+      "metal": "pow(fmax(0.0f, 1.0f - a * b), 2.0f)",
+      "fast_enabled": 0
+    },
+    "cosine_similarity": {
+      "opcode": 198,
+      "display_name": "cosine_similarity",
+      "arg_count": 2,
+      "aliases": [
+        "cosine_sim"
+      ],
+      "metal": "a * b / (fabs(a) * fabs(b))",
+      "fast_enabled": 0
+    },
+    "cosine_distance": {
+      "opcode": 199,
+      "display_name": "cosine_distance",
+      "arg_count": 2,
+      "aliases": [
+        "cosine_dist"
+      ],
+      "metal": "1.0f - (a * b / (fabs(a) * fabs(b)))",
+      "fast_enabled": 0
+    },
+    "l1_loss": {
+      "opcode": 200,
+      "display_name": "l1_loss",
+      "arg_count": 2,
+      "aliases": [
+        "mae",
+        "mean_absolute_error"
+      ],
+      "metal": "fabs(a - b)",
+      "fast_enabled": 0
+    },
+    "l2_loss": {
+      "opcode": 201,
+      "display_name": "l2_loss",
+      "arg_count": 2,
+      "aliases": [
+        "mse",
+        "mean_squared_error"
+      ],
+      "metal": "pow(a - b, 2.0f)",
+      "fast_enabled": 0
+    },
+    "smooth_l1": {
+      "opcode": 202,
+      "display_name": "smooth_l1",
+      "arg_count": 2,
+      "aliases": [
+        "smooth_l1_loss"
+      ],
+      "metal": "fabs(a - b) < 1.0f ? 0.5f * pow(a - b, 2.0f) : fabs(a - b) - 0.5f",
+      "fast_enabled": 0
+    },
+    "log_cosh": {
+      "opcode": 203,
+      "display_name": "log_cosh",
+      "arg_count": 2,
+      "aliases": [
+        "logcosh_loss"
+      ],
+      "metal": "log(cosh(a - b))",
+      "fast_enabled": 0
+    },
+    "quantile_loss": {
+      "opcode": 204,
+      "display_name": "quantile_loss",
+      "arg_count": 3,
+      "aliases": [
+        "pinball_loss"
+      ],
+      "metal": "fmax(c * (a - b), (c - 1.0f) * (a - b))",
+      "fast_enabled": 0
+    },
+    "poisson_loss": {
+      "opcode": 205,
+      "display_name": "poisson_loss",
+      "arg_count": 2,
+      "aliases": [],
+      "metal": "b - a * log(b + 1e-8f)",
+      "fast_enabled": 1
+    },
+    "xlogy": {
+      "opcode": 206,
+      "display_name": "xlogy",
+      "arg_count": 2,
+      "aliases": [
+        "x_log_y"
+      ],
+      "metal": "a == 0.0f ? 0.0f : a * log(b)",
+      "fast_enabled": 1
+    },
+    "rel_entr": {
+      "opcode": 208,
+      "display_name": "rel_entr",
+      "arg_count": 2,
+      "aliases": [
+        "relative_entropy"
+      ],
+      "metal": "a > 0.0f ? a * log(a / b) : 0.0f",
+      "fast_enabled": 1
+    },
+    "entr": {
+      "opcode": 209,
+      "display_name": "entr",
+      "arg_count": 1,
+      "aliases": [
+        "entropy"
+      ],
+      "metal": "x > 0.0f ? -x * log(x) : 0.0f",
+      "fast_enabled": 1
+    },
+    "logit": {
+      "opcode": 210,
+      "display_name": "logit",
+      "arg_count": 1,
+      "aliases": [
+        "log_odds"
+      ],
+      "metal": "log(x / (1.0f - x))",
+      "fast_enabled": 1
+    },
+    "expit": {
+      "opcode": 211,
+      "display_name": "expit",
+      "arg_count": 1,
+      "aliases": [
+        "inverse_logit"
+      ],
+      "metal": "1.0f / (1.0f + exp(-x))",
+      "fast_enabled": 1
+    },
+    "boxcox": {
+      "opcode": 212,
+      "display_name": "boxcox",
+      "arg_count": 2,
+      "aliases": [
+        "box_cox"
+      ],
+      "metal": "b == 0.0f ? log(a) : (pow(a, b) - 1.0f) / b",
+      "fast_enabled": 0
+    },
+    "inv_boxcox": {
+      "opcode": 213,
+      "display_name": "inv_boxcox",
+      "arg_count": 2,
+      "aliases": [
+        "inverse_box_cox"
+      ],
+      "metal": "b == 0.0f ? exp(a) : pow(a * b + 1.0f, 1.0f / b)",
+      "fast_enabled": 1
+    },
+    "standardize": {
+      "opcode": 216,
+      "display_name": "standardize",
+      "arg_count": 3,
+      "aliases": [
+        "zscore",
+        "z_score"
+      ],
+      "metal": "(a - b) / c",
+      "fast_enabled": 0
+    },
+    "unstandardize": {
+      "opcode": 217,
+      "display_name": "unstandardize",
+      "arg_count": 3,
+      "aliases": [
+        "unzscore"
+      ],
+      "metal": "a * c + b",
+      "fast_enabled": 0
+    },
+    "softclip": {
+      "opcode": 218,
+      "display_name": "softclip",
+      "arg_count": 2,
+      "aliases": [],
+      "metal": "a / sqrt(1.0f + a * a / (b * b))",
+      "fast_enabled": 0
+    },
+    "gumbel_softmax": {
+      "opcode": 219,
+      "display_name": "gumbel_softmax",
+      "arg_count": 3,
+      "aliases": [
+        "gumbel"
+      ],
+      "metal": "exp((a + c) / b) / (exp((a + c) / b) + 1.0f)",
+      "fast_enabled": 1
+    },
+    "sparsemax": {
+      "opcode": 220,
+      "display_name": "sparsemax",
+      "arg_count": 2,
+      "aliases": [],
+      "metal": "fmax(0.0f, a - b)",
+      "fast_enabled": 0
+    },
+    "arcsinh_asinh": {
+      "opcode": 221,
+      "display_name": "arcsinh_asinh",
+      "arg_count": 3,
+      "aliases": [],
+      "metal": "sinh((asinh(a) + b) / c)",
+      "fast_enabled": 0
+    },
+    "iqr": {
+      "opcode": 222,
+      "display_name": "iqr",
+      "arg_count": 2,
+      "aliases": [
+        "interquartile_range"
+      ],
+      "metal": "b - a",
+      "fast_enabled": 0
+    },
+    "mad": {
+      "opcode": 223,
+      "display_name": "mad",
+      "arg_count": 2,
+      "aliases": [
+        "median_absolute_deviation"
+      ],
+      "metal": "fabs(a - b)",
+      "fast_enabled": 0
+    },
+    "z_score_robust": {
+      "opcode": 224,
+      "display_name": "z_score_robust",
+      "arg_count": 3,
+      "aliases": [
+        "modified_z_score"
+      ],
+      "metal": "(a - b) / c",
+      "fast_enabled": 0
+    },
+    "winsorize": {
+      "opcode": 225,
+      "display_name": "winsorize",
+      "arg_count": 3,
+      "aliases": [
+        "winsor"
+      ],
+      "metal": "clamp(a, b, c)",
+      "fast_enabled": 0
+    },
+    "tukey_transform": {
+      "opcode": 226,
+      "display_name": "tukey_transform",
+      "arg_count": 2,
+      "aliases": [
+        "tukey"
+      ],
+      "metal": "b == 0.0f ? log(a) : (pow(a, b) - 1.0f) / b",
+      "fast_enabled": 0
+    },
+    "modular_add": {
+      "opcode": 227,
+      "display_name": "modular_add",
+      "arg_count": 3,
+      "aliases": [
+        "mod_add"
+      ],
+      "metal": "fmod(a + b, c)",
+      "fast_enabled": 0
+    },
+    "modular_subtract": {
+      "opcode": 228,
+      "display_name": "modular_subtract",
+      "arg_count": 3,
+      "aliases": [
+        "mod_sub"
+      ],
+      "metal": "fmod(a - b + c, c)",
+      "fast_enabled": 0
+    },
+    "modular_multiply": {
+      "opcode": 229,
+      "display_name": "modular_multiply",
+      "arg_count": 3,
+      "aliases": [
+        "mod_mul"
+      ],
+      "metal": "fmod(a * b, c)",
+      "fast_enabled": 0
+    },
+    "modular_power": {
+      "opcode": 230,
+      "display_name": "modular_power",
+      "arg_count": 3,
+      "aliases": [
+        "mod_pow"
+      ],
+      "metal": "fmod(pow(a, b), c)",
+      "fast_enabled": 0
+    }
+  }
+}

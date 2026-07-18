@@ -68,7 +68,6 @@ def _patch_cuda_paths():
     paths._get_nvvm_path = lambda: _env_path_tuple("METAXUDA", LIBNVVM)
     paths._get_libdevice_paths = lambda: _env_path_tuple("METAXUDA", LIBDEVICE)
     paths._get_cudalib_dir = lambda: _env_path_tuple("METAXUDA", NATIVE_DIR)
-
     if hasattr(paths.get_cuda_paths, "_cached_result"):
         del paths.get_cuda_paths._cached_result
 
@@ -79,10 +78,8 @@ def _patch_lib_resolution():
     are never found and it falls back to a bare name for dyld to resolve.
     """
     from numba.cuda.cudadrv import libs
-
     if getattr(libs.get_cudalib, "_metaxuda_patched", False):
         return
-
     original = libs.get_cudalib
 
     def get_cudalib(lib, static=False):
@@ -100,11 +97,9 @@ def _reset_driver_singleton():
     on first use, so importing numba.cuda before metaxuda would leave it dead.
     """
     from numba.cuda.cudadrv import driver
-
     obj = getattr(driver, "driver", None)
     if obj is None or getattr(obj, "initialization_error", None) is None:
         return
-
     obj.__dict__.clear()
     try:
         obj.__init__()
@@ -118,13 +113,11 @@ def patch_libdevice():
     global _patched
     if _patched:
         return
-
     setup_native_libs()
     _patch_driver_env()
     _patch_cuda_paths()
     _patch_lib_resolution()
     _reset_driver_singleton()
-
     _patched = True
 
 def get_libcudart_path():

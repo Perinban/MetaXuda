@@ -7,20 +7,21 @@ from .env import setup_environment
 
 setup_environment()
 
-from .buffer import GPUMemoryBuffer, TieredBuffer
-from .stream import GPUStream, DEFAULT_STREAM
-from .pipeline import run_pipeline
-from .pool import StreamPool
+from .buffers import GPUMemoryBuffer, TieredBuffer, ManagedGPUBuffer
+from .streams import GPUStream, ManagedStream
+from .execution import run_pipeline, Pipeline, PipelinePool
 
-__version__ = "1.0.0"
+__version__ = "2.0.1"
 
 __all__ = [
     "GPUMemoryBuffer",
     "TieredBuffer",
+    "ManagedGPUBuffer",
     "GPUStream",
-    "DEFAULT_STREAM",
-    "StreamPool",
+    "ManagedStream",
     "run_pipeline",
+    "Pipeline",
+    "PipelinePool",
     "patch_libdevice",
     "get_libcudart_path",
 ]

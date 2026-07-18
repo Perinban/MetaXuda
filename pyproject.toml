@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "metaxuda"
 dynamic = ["version"]
-description = "CUDA-compatible GPU runtime for Apple Silicon that maps Numba CUDA kernels and memory operations onto Apple Metal. Synchronous execution line."
+description = "CUDA-compatible GPU runtime for Apple Silicon that transparently maps CUDA kernels and memory operations to Metal, enabling Numba and Python GPU workloads with stream overlap and tier-aware memory management."
 readme = "README.md"
 requires-python = ">=3.10"
 authors = [
@@ -30,14 +30,12 @@ classifiers = [
 # Upper bound is deliberate: the shim patches private Numba internals.
 dependencies = [
     "numpy>=1.23",
-    "numba>=0.61,<0.67"
+    "numba>=0.61,<0.67",
+    "psutil>=5.9"
 ]
 
-[project.optional-dependencies]
-test = ["pytest>=7.0"]
-
 [tool.setuptools.dynamic]
-version = { attr = "metaxuda.__version__" }
+version = {attr = "metaxuda.__version__"}
 
 [tool.setuptools.packages.find]
 where = ["."]
@@ -48,9 +46,4 @@ metaxuda = [
     "native/*.dylib",
     "native/*.bc",
     "native/*.so"
-]
-
-[tool.pytest.ini_options]
-markers = [
-    "gpu: requires a physical Apple Silicon GPU (skipped in CI)"
 ]

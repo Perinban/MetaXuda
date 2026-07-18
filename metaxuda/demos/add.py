@@ -1,10 +1,6 @@
 import numpy as np
 from numba import cuda
-from metaxuda import GPUMemoryBuffer, StreamPool
-
-# ------------------------------------------------
-# Kernels
-# ------------------------------------------------
+from metaxuda import GPUMemoryBuffer, Pipeline
 
 @cuda.jit
 def add_kernel_1d(A, B, C, N):
@@ -26,31 +22,35 @@ def add_kernel_3d(A, B, C, W, H, D):
         idx = z * H * W + y * W + x
         C[idx] = A[idx] + B[idx]
 
-# ------------------------------------------------
-# Demos
-# ------------------------------------------------
-
 def demo_1d_add():
     N = 1024
     A = np.random.rand(N).astype(np.float32)
     B = np.random.rand(N).astype(np.float32)
 
-    bufA = GPUMemoryBuffer(length=A.size, dtype=A.dtype)
-    bufA.upload(A)
-    bufB = GPUMemoryBuffer(length=B.size, dtype=B.dtype)
-    bufB.upload(B)
+    bufA = GPUMemoryBuffer(arr=A)
+    bufB = GPUMemoryBuffer(arr=B)
     bufC = GPUMemoryBuffer(length=N, dtype=np.float32)
+    bufC.zeros()
 
-    threads_per_block = 256
-    blocks_per_grid = (N + threads_per_block - 1) // threads_per_block
-    add_kernel_1d[blocks_per_grid, threads_per_block](bufA.dev_array, bufB.dev_array, bufC.dev_array, N)
-    cuda.synchronize()
+    pipeline = Pipeline(add_kernel_1d)
+    pipeline([bufA, bufB], output=bufC, extra_args=[N])
 
-    print("1D Input A[:5]:", A[:5])
-    print("1D Input B[:5]:", B[:5])
-    print("1D Output[:5]:", bufC.download()[:5])
+    C_result = bufC.download()
+    expected = A + B
 
-    bufA.free(); bufB.free(); bufC.free()
+    print("=" * 60)
+    print("1D Addition Test")
+    print("=" * 60)
+    print(f"Input A[:5]: {A[:5]}")
+    print(f"Input B[:5]: {B[:5]}")
+    print(f"Output C[:5]: {C_result[:5]}")
+    print(f"Expected[:5]: {expected[:5]}")
+    print(f"Verification: {np.allclose(C_result, expected)}")
+    print()
+
+    bufA.free()
+    bufB.free()
+    bufC.free()
 
 def demo_2d_add():
     W, H = 32, 16
@@ -58,82 +58,63 @@ def demo_2d_add():
     A = np.random.rand(N).astype(np.float32)
     B = np.random.rand(N).astype(np.float32)
 
-    bufA = GPUMemoryBuffer(length=A.size, dtype=A.dtype)
-    bufA.upload(A)
-    bufB = GPUMemoryBuffer(length=B.size, dtype=B.dtype)
-    bufB.upload(B)
+    bufA = GPUMemoryBuffer(arr=A)
+    bufB = GPUMemoryBuffer(arr=B)
     bufC = GPUMemoryBuffer(length=N, dtype=np.float32)
+    bufC.zeros()
 
-    threads_per_block = (16, 16)
-    blocks_per_grid = ((W + threads_per_block[0] - 1) // threads_per_block[0],
-                       (H + threads_per_block[1] - 1) // threads_per_block[1])
-    add_kernel_2d[blocks_per_grid, threads_per_block](bufA.dev_array, bufB.dev_array, bufC.dev_array, W, H)
-    cuda.synchronize()
+    pipeline = Pipeline(add_kernel_2d)
+    pipeline([bufA, bufB], output=bufC, extra_args=[W, H])
 
-    print("2D Input A[:5]:", A[:5])
-    print("2D Input B[:5]:", B[:5])
-    print("2D Output[:5]:", bufC.download()[:5])
+    C_result = bufC.download()
+    expected = A + B
 
-    bufA.free(); bufB.free(); bufC.free()
+    print("=" * 60)
+    print(f"2D Addition Test ({W}x{H})")
+    print("=" * 60)
+    print(f"Input A[:5]: {A[:5]}")
+    print(f"Input B[:5]: {B[:5]}")
+    print(f"Output C[:5]: {C_result[:5]}")
+    print(f"Expected[:5]: {expected[:5]}")
+    print(f"Verification: {np.allclose(C_result, expected)}")
+    print()
+
+    bufA.free()
+    bufB.free()
+    bufC.free()
 
 def demo_3d_add():
-    W, H, D = 8, 4, 8  # keep threads <=256
+    W, H, D = 8, 4, 8
     N = W * H * D
     A = np.random.rand(N).astype(np.float32)
     B = np.random.rand(N).astype(np.float32)
 
-    bufA = GPUMemoryBuffer(length=A.size, dtype=A.dtype)
-    bufA.upload(A)
-    bufB = GPUMemoryBuffer(length=B.size, dtype=B.dtype)
-    bufB.upload(B)
+    bufA = GPUMemoryBuffer(arr=A)
+    bufB = GPUMemoryBuffer(arr=B)
     bufC = GPUMemoryBuffer(length=N, dtype=np.float32)
+    bufC.zeros()
 
-    threads_per_block = (8, 4, 8)
-    blocks_per_grid = ((W + threads_per_block[0] - 1) // threads_per_block[0],
-                       (H + threads_per_block[1] - 1) // threads_per_block[1],
-                       (D + threads_per_block[2] - 1) // threads_per_block[2])
-    add_kernel_3d[blocks_per_grid, threads_per_block](bufA.dev_array, bufB.dev_array, bufC.dev_array, W, H, D)
-    cuda.synchronize()
+    pipeline = Pipeline(add_kernel_3d)
+    pipeline([bufA, bufB], output=bufC, extra_args=[W, H, D])
 
-    print("3D Input A[:5]:", A[:5])
-    print("3D Input B[:5]:", B[:5])
-    print("3D Output[:5]:", bufC.download()[:5])
+    C_result = bufC.download()
+    expected = A + B
 
-    bufA.free(); bufB.free(); bufC.free()
+    print("=" * 60)
+    print(f"3D Addition Test ({W}x{H}x{D})")
+    print("=" * 60)
+    print(f"Input A[:5]: {A[:5]}")
+    print(f"Input B[:5]: {B[:5]}")
+    print(f"Output C[:5]: {C_result[:5]}")
+    print(f"Expected[:5]: {expected[:5]}")
+    print(f"Verification: {np.allclose(C_result, expected)}")
+    print()
 
-def demo_with_streams():
-    W, H = 64, 32
-    N = W * H
-    A = np.random.rand(N).astype(np.float32)
-    B = np.random.rand(N).astype(np.float32)
-
-    bufA = GPUMemoryBuffer(length=A.size, dtype=A.dtype)
-    bufA.upload(A)
-    bufB = GPUMemoryBuffer(length=B.size, dtype=B.dtype)
-    bufB.upload(B)
-    bufC = GPUMemoryBuffer(length=N, dtype=np.float32)
-
-    pool = StreamPool(num_streams=2)
-    s1 = pool.next()
-
-    threads_per_block = (16, 16)
-    blocks_per_grid = ((W + threads_per_block[0] - 1) // threads_per_block[0],
-                       (H + threads_per_block[1] - 1) // threads_per_block[1])
-    add_kernel_2d[blocks_per_grid, threads_per_block, s1.numba](bufA.dev_array, bufB.dev_array, bufC.dev_array, W, H)
-    pool.sync_all()
-
-    print("Streamed Input A[:5]:", A[:5])
-    print("Streamed Input B[:5]:", B[:5])
-    print("Streamed Output[:5]:", bufC.download()[:5])
-
-    bufA.free(); bufB.free(); bufC.free()
-
-# ------------------------------------------------
-# Main
-# ------------------------------------------------
+    bufA.free()
+    bufB.free()
+    bufC.free()
 
 if __name__ == "__main__":
     demo_1d_add()
     demo_2d_add()
     demo_3d_add()
-    demo_with_streams()
