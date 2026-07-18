@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.2] - 2026-07-18
+
+### Fixed
+
+- Fixed macOS Sequoia compatibility by adding automatic Metal 3/Metal 4 shader fallback.
+- Fixed implicit NumPy host-array transfers and output writeback for Numba kernels.
+
 ## [2.0.1] - 2026-07-18
 
 ### Added

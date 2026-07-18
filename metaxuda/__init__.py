@@ -11,7 +11,7 @@ from .buffers import GPUMemoryBuffer, TieredBuffer, ManagedGPUBuffer
 from .streams import GPUStream, ManagedStream
 from .execution import run_pipeline, Pipeline, PipelinePool
 
-__version__ = "2.0.1"
+__version__ = "2.0.2"
 
 __all__ = [
     "GPUMemoryBuffer",

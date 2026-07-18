@@ -1,7 +1,7 @@
 import metaxuda
 
 def test_version():
-    assert metaxuda.__version__ == "2.0.1"
+    assert metaxuda.__version__ == "2.0.2"
 
 def test_public_api():
     for name in metaxuda.__all__:
