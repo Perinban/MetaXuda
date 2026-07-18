@@ -1,0 +1,56 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "metaxuda"
+dynamic = ["version"]
+description = "CUDA-compatible GPU runtime for Apple Silicon that maps Numba CUDA kernels and memory operations onto Apple Metal. Synchronous execution line."
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [
+    { name = "Perinban Parameshwaran", email = "p.perinban@gmail.com" }
+]
+license = { text = "Proprietary - Free for students and personal use. Commercial use requires license from p.perinban@gmail.com" }
+
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Operating System :: MacOS",
+    "Topic :: Scientific/Engineering",
+    "Topic :: Software Development :: Libraries :: Python Modules"
+]
+
+# Upper bound is deliberate: the shim patches private Numba internals.
+dependencies = [
+    "numpy>=1.23",
+    "numba>=0.61,<0.67"
+]
+
+[project.optional-dependencies]
+test = ["pytest>=7.0"]
+
+[tool.setuptools.dynamic]
+version = { attr = "metaxuda.__version__" }
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["metaxuda*"]
+
+[tool.setuptools.package-data]
+metaxuda = [
+    "native/*.dylib",
+    "native/*.bc",
+    "native/*.so"
+]
+
+[tool.pytest.ini_options]
+markers = [
+    "gpu: requires a physical Apple Silicon GPU (skipped in CI)"
+]
