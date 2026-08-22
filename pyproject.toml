@@ -30,8 +30,7 @@ classifiers = [
 # Upper bound is deliberate: the shim patches private Numba internals.
 dependencies = [
     "numpy>=1.23",
-    "numba>=0.61,<0.67",
-    "psutil>=5.9"
+    "numba>=0.61,<0.68"
 ]
 
 [tool.setuptools.dynamic]
