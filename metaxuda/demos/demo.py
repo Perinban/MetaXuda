@@ -2,7 +2,6 @@
 
 import os
 import shutil
-import psutil
 import tempfile
 import numpy as np
 import math
@@ -19,11 +18,6 @@ def device_info():
     print("\n" + "=" * 60)
     print("DEVICE INFORMATION")
     print("=" * 60)
-    proc = psutil.Process()
-    rss_mb = proc.memory_info().rss / 1024 / 1024
-    ram = psutil.virtual_memory()
-    print(f"Process RSS: {rss_mb:.1f} MB")
-    print(f"System RAM: {ram.total / 1e9:.1f} GB total, {ram.available / 1e9:.1f} GB available")
     print(f"GPU Device: Metal Default Device")
     total_size = 0
     if os.path.exists(TIER3_PATH):
@@ -75,8 +69,6 @@ def test_large_tier():
     arr = np.full(total_bytes // 4, 3.14159, dtype=np.float32)
     print("Uploading...")
     buf.upload(arr)
-    ram = psutil.virtual_memory()
-    print(f"RAM after upload: {ram.available / 1e9:.1f} GB available")
     print("Upload complete")
     buf.free()
     return {"tier_verified": True, "tier_size_gb": total_bytes / (1024 ** 3)}

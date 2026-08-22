@@ -86,8 +86,7 @@ Pass scalars as single-element device arrays until this is resolved.
 * Apple Silicon (M-series) with Metal 3 or Metal 4 support
 * Python >= 3.10
 * NumPy >= 1.23
-* Numba >= 0.61, < 0.67
-* psutil >= 5.9
+* Numba >= 0.61, < 0.68
 
 ### Install (Editable / Dev)
 
@@ -221,7 +220,7 @@ These settings allow fine‑grained control over **compression, quantization, di
 
 MetaXuda includes a **precompiled Metal math pipeline** (`cuda_pipeline.so`) implementing a broad set of scalar and elementwise operations that can be invoked directly by Numba or higher-level tooling.
 
-* **230+ operations** covering:
+* **190 operations** covering:
 
   * Arithmetic, comparison, and logical ops
   * Trigonometric and hyperbolic functions
@@ -232,7 +231,7 @@ MetaXuda includes a **precompiled Metal math pipeline** (`cuda_pipeline.so`) imp
   * Signal, interpolation, and utility math
 * Each operation is mapped to a corresponding **Metal expression**
 * Selected ops support **fast-math variants** where numerically safe
-* **Full operation list**: See `config/operations.json` for all supported operations and their signatures
+* **Full operation list**: See `metaxuda/config/operations.json` for all supported operations and their signatures
 
 This allows many Numba-generated kernels to execute without requiring full PTX → Metal translation, significantly reducing overhead.
 
